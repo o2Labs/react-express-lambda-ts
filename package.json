@@ -1,0 +1,77 @@
+{
+  "private": true,
+  "name": "react-express-lambda-ts",
+  "description": "Example of a serverless application solution",
+  "version": "1.0.0",
+  "author": {
+    "name": "The Lab by O2",
+    "url": "https://github.com/o2labs"
+  },
+  "contributors": [
+    {"name": "Daniel Bradley", "url": "https://github.com/danielrbradley/", "email": "daniel.bradley@telefonica.com" },
+    {"name": "Andreas Christou", "url": "https://github.com/aangelisc", "email": "andreas.christou@telefonica.com" }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/o2labs/react-express-lambda-ts"
+  },
+  "engines": {
+    "node": ">=4.3.2"
+  },
+  "scripts": {
+    "format": "prettier --write --config .prettierrc.yaml '**/*.ts'",
+    "clean-server": "cd server && rm -rf **/*.js && rm -f *.js && cd ..",
+    "clean-client": "rm -rf client/coverage && rm -rf client/build",
+    "clean": "yarn clean-server && yarn clean-client",
+    "test-server": "jest && tsc --noEmit",
+    "test-client": "cd client && react-scripts-ts test --coverage --env=jsdom && cd ..",
+    "test": "yarn test-server && yarn test-client",
+    "build-server": "yarn clean-server && tsc",
+    "build-client": "yarn clean-client && cd client && react-scripts-ts build ",
+    "build": "yarn build-client && yarn build-server",
+    "prepare": "yarn format && yarn test",
+    "package": "yarn build && serverless package && yarn clean",
+    "deploy-local": "yarn build && eval \"`aws-auth-helper` serverless deploy\" && yarn clean",
+    "undeploy-local": "eval \"`aws-auth-helper` serverless remove\"",
+    "deploy": "yarn build && serverless deploy",
+    "start": "yarn build-client && ts-node server/local.ts"
+  },
+  "dependencies": {
+    "@types/morgan": "^1.7.35",
+    "client": "file:client",
+    "server": "file:server"
+  },
+  "devDependencies": {
+    "@types/faker": "^4.1.2",
+    "@types/jest": "^23.3.1",
+    "@types/node": "^10.5.4",
+    "@types/react": "^16.4.7",
+    "@types/react-dom": "^16.0.6",
+    "@types/shelljs": "^0.8.0",
+    "aws-auth-helper": "^1.0.0",
+    "faker": "^4.1.0",
+    "jest": "^22.4.2",
+    "prettier": "^1.14.0",
+    "react-scripts-ts": "2.16.0",
+    "serverless": "^1.26.0",
+    "serverless-apigw-binary": "^0.4.4",
+    "ts-jest": "^22.0.1",
+    "ts-node": "^7.0.0",
+    "typescript": "^3.0.1"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "server/.*\\.test.(ts|tsx|js)",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  }
+}

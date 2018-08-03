@@ -1,0 +1,11 @@
+{
+  "name": "client",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {   
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "@types/react": "^16.4.7",
+    "@types/react-dom": "^16.0.6"
+  }
+}

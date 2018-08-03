@@ -1,0 +1,10 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - npm i -g yarn
+      - yarn
+  build:
+    commands:
+      - yarn build

@@ -1,0 +1,17 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "dependencies": {
+    "@types/aws-serverless-express": "^3.0.1",
+    "@types/compression": "^0.0.35",
+    "@types/cors": "^2.8.3",
+    "aws-sdk": "^2.284.1",
+    "aws-serverless-express": "^3.1.0",
+    "collection-fns": "^1.5.1",
+    "compression": "^1.7.1",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "morgan": "^1.9.0",
+    "source-map-support": "^0.5.3"
+  }
+}
